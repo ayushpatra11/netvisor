@@ -32,7 +32,7 @@ func Run(version string) int {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	if err := watcherInstance.Start(ctx); err != nil {
+	if err = watcherInstance.Start(ctx); err != nil {
 		logger.Error("failed to start watcher", zap.Error(err))
 		return 1
 	}
