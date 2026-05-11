@@ -17,7 +17,7 @@ type EventType string
 const (
 	EventTypeAdded   EventType = "ADDED"
 	EventTypeDeleted EventType = "DELETED"
-	EventTypeChanged EventType = "CHANGED" // Reserved for later. 
+	EventTypeChanged EventType = "CHANGED" // Reserved for later.
 )
 
 // Event is what we send down the channel to consumers.
