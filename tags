@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BINARY	Makefile	/^BINARY        := netvisor$/;"	m
+CMD_PATH	Makefile	/^CMD_PATH      := .\/cmd\/netvisor$/;"	m
+Event	internal/netlinkwatcher/watcher.go	/^type Event struct {$/;"	t
+EventType	internal/netlinkwatcher/watcher.go	/^type EventType string$/;"	t
+EventTypeAdded	internal/netlinkwatcher/watcher.go	/^	EventTypeAdded   EventType = "ADDED"$/;"	c
+EventTypeChanged	internal/netlinkwatcher/watcher.go	/^	EventTypeChanged EventType = "CHANGED" \/\/ Reserved for later.$/;"	c
+EventTypeDeleted	internal/netlinkwatcher/watcher.go	/^	EventTypeDeleted EventType = "DELETED"$/;"	c
+Events	internal/netlinkwatcher/watcher.go	/^func (w *Watcher) Events() <-chan Event {$/;"	f
+GO	Makefile	/^GO            := go$/;"	m
+GOFLAGS	Makefile	/^GOFLAGS       :=$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS       := -ldflags "-X main.version=$(VERSION) -s -w"$/;"	m
+LINT	Makefile	/^LINT          := golangci-lint$/;"	m
+New	internal/netlinkwatcher/watcher.go	/^func New(logger *zap.Logger) *Watcher {$/;"	f
+OUT_DIR	Makefile	/^OUT_DIR       := bin$/;"	m
+Run	internal/cli/root.go	/^func Run(version string) int {$/;"	f
+Start	internal/netlinkwatcher/watcher.go	/^func (w *Watcher) Start(ctx context.Context) error {$/;"	f
+TestToEvent	internal/netlinkwatcher/watcher_test.go	/^func TestToEvent(t *testing.T) {$/;"	f
+TestVersionCmd	internal/cli/root_test.go	/^func TestVersionCmd(t *testing.T) {$/;"	f
+VERSION	Makefile	/^VERSION       ?= $(shell git describe --tags --always --dirty 2>\/dev\/null || echo "dev")$/;"	m
+Watcher	internal/netlinkwatcher/watcher.go	/^type Watcher struct {$/;"	t
+buildRootCmd	internal/cli/root.go	/^func buildRootCmd(version string, logger *zap.Logger) *cobra.Command {$/;"	f
+cli	internal/cli/root.go	/^package cli$/;"	p
+cli	internal/cli/root_test.go	/^package cli$/;"	p
+main	cmd/netvisor/main.go	/^func main() {$/;"	f
+main	cmd/netvisor/main.go	/^package main$/;"	p
+netlinkwatcher	internal/netlinkwatcher/watcher.go	/^package netlinkwatcher$/;"	p
+netlinkwatcher	internal/netlinkwatcher/watcher_test.go	/^package netlinkwatcher$/;"	p
+toEvent	internal/netlinkwatcher/watcher.go	/^func toEvent(update netlink.LinkUpdate) Event {$/;"	f
+version	cmd/netvisor/main.go	/^var version = "dev"$/;"	v
+versionCmd	internal/cli/root.go	/^func versionCmd(version string) *cobra.Command {$/;"	f
