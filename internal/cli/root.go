@@ -3,14 +3,12 @@
 package cli
 
 import (
-	"context"
 	"fmt"
 	"os"
 
 	"github.com/ayushpatra11/netvisor/internal/netlinkwatcher"
 	"github.com/ayushpatra11/netvisor/internal/store"
 	"github.com/spf13/cobra"
-	"github.com/vishvananda/netlink"
 	"go.uber.org/zap"
 )
 
@@ -28,44 +26,6 @@ func Run(version string) int {
 
 	watcherInstance := netlinkwatcher.New(logger)
 	storeInstance := store.New()
-
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	if err = watcherInstance.Start(ctx); err != nil {
-		logger.Error("failed to start watcher", zap.Error(err))
-		return 1
-	}
-
-	// dispatcher — reads events from watcher, updates store
-	go func() {
-		for event := range watcherInstance.Events() {
-			switch event.Type {
-			case netlinkwatcher.EventTypeAdded:
-				storeInstance.Update(event)
-			case netlinkwatcher.EventTypeDeleted:
-				storeInstance.Delete(event.Index)
-			}
-		}
-	}()
-
-	// populate store with current interfaces before handling commands
-	links, err := netlink.LinkList()
-	if err != nil {
-		logger.Error("failed to list initial interfaces", zap.Error(err))
-		return 1
-	}
-	for _, link := range links {
-		attrs := link.Attrs()
-		storeInstance.Update(netlinkwatcher.Event{
-			Type:      netlinkwatcher.EventTypeAdded,
-			Index:     attrs.Index,
-			LinkName:  attrs.Name,
-			MTU:       attrs.MTU,
-			Flags:     attrs.Flags,
-			OperState: attrs.OperState,
-		})
-	}
 
 	root := buildRootCmd(version, logger, watcherInstance, storeInstance)
 
@@ -92,8 +52,10 @@ Think of it as a unified control-plane lens across your entire network stack.`,
 
 	// Attach sub-commands
 	root.AddCommand(versionCmd(version))
-	root.AddCommand(listCmd(storeInstance, logger))
-	root.AddCommand(watchCmd(watcherInstance, logger))
+	root.AddCommand(listCmd(watcherInstance, storeInstance, logger))
+	root.AddCommand(watchCmd(watcherInstance, storeInstance, logger))
+	root.AddCommand(serveCmd(watcherInstance, storeInstance, logger))
+	//root.AddCommand(statusCmd(netvisorServer, grpcServer, logger))
 
 	return root
 }
