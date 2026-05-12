@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.22"
+          go-version: "1.25"
           # Cache the Go module download cache between runs.
           # Without this, every run re-downloads all dependencies (~30s wasted).
           cache: true
@@ -28,7 +28,7 @@ jobs:
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.64
+          version: latest
 
   # ── 2. Test ────────────────────────────────────────────────────────────────
   # Matrix: run tests on multiple Go versions so you catch version-specific issues.
