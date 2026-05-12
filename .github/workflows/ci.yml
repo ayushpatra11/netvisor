@@ -56,9 +56,6 @@ jobs:
       - name: Run tests (with race detector)
         run: go test -race -count=1 ./...
 
-      - name: Show coverage summary
-        run: go tool cover -func=coverage.out
-
   # ── 3. Build ───────────────────────────────────────────────────────────────
   # Cross-compile for all target platforms.
   # GOOS/GOARCH are Go's cross-compilation env vars — no toolchain needed.
