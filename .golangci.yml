@@ -5,6 +5,8 @@
 
 run:
   timeout: 5m
+  exclude-dirs:
+    - proto
   # Only lint files that changed vs main — faster on large repos.
   # Remove this if you want to lint everything always.
 

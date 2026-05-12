@@ -1,0 +1,21 @@
+syntax = "proto3";
+package netvisor.v1;
+option go_package = "github.com/ayushpatra11/netvisor/pkg/api/v1";
+
+service NetworkService {
+    rpc ListInterface(ListInterfaceRequest) returns (ListInterfaceResponse);
+}
+
+message Interface {
+    int32 index = 1;
+    string link_name = 2;
+    uint32 mtu = 3;
+    uint32 flags = 4;
+    uint32 oper_state = 5;
+}
+
+message ListInterfaceRequest {}
+
+message ListInterfaceResponse {
+    repeated Interface interfaces = 1;   
+}
