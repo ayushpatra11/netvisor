@@ -28,7 +28,7 @@ jobs:
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.61
+          version: v1.64
 
   # ── 2. Test ────────────────────────────────────────────────────────────────
   # Matrix: run tests on multiple Go versions so you catch version-specific issues.
