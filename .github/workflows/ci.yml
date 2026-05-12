@@ -54,10 +54,7 @@ jobs:
         run: go mod download
 
       - name: Run tests (with race detector)
-        # -race: enables the race detector (catches concurrent memory bugs)
-        # -count=1: disables test result caching — always run fresh
-        # -coverprofile: writes coverage data for the next step
-        run: go test -race -count=1 -coverprofile=coverage.out ./...
+        run: go test -race -count=1 ./...
 
       - name: Show coverage summary
         run: go tool cover -func=coverage.out
