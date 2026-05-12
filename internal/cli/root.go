@@ -55,7 +55,6 @@ Think of it as a unified control-plane lens across your entire network stack.`,
 	root.AddCommand(listCmd(watcherInstance, storeInstance, logger))
 	root.AddCommand(watchCmd(watcherInstance, storeInstance, logger))
 	root.AddCommand(serveCmd(watcherInstance, storeInstance, logger))
-	//root.AddCommand(statusCmd(netvisorServer, grpcServer, logger))
 
 	return root
 }

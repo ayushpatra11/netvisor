@@ -89,8 +89,9 @@ func TestNewServer(t *testing.T) {
 	s := store.New()
 	srv := New(s)
 	if srv == nil {
-		t.Error("expected non-nil server")
+		t.Fatal("expected non-nil server")
 	}
+	// now safe to access fields
 	if srv.serverStore != s {
 		t.Error("store not correctly assigned")
 	}

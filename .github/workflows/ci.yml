@@ -26,9 +26,9 @@ jobs:
           cache: true
 
       - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: latest
+        run: |
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+          golangci-lint run ./...
 
   # ── 2. Test ────────────────────────────────────────────────────────────────
   # Matrix: run tests on multiple Go versions so you catch version-specific issues.

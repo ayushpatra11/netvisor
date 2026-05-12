@@ -46,7 +46,7 @@ func serveCmd(watcher *netlinkwatcher.Watcher, store *store.Store, logger *zap.L
 			ctx, cancel := context.WithCancel(context.Background())
 			defer cancel()
 
-			if err := watcher.Start(ctx); err != nil {
+			if err = watcher.Start(ctx); err != nil {
 				logger.Error("failed to start watcher", zap.Error(err))
 				return err
 			}
